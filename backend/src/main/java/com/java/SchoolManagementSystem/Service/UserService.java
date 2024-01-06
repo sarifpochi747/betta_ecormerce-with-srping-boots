@@ -29,7 +29,7 @@ public class UserService {
 
     public User crateUser(String name,String email,String password){
         //create user data
-        User user = User.builder().email(email).name(name).password(passwordEncoder.encode(password)).role(UserRole.STUDENT).build();
+        User user = User.builder().email(email).name(name).password(passwordEncoder.encode(password)).role(UserRole.CUSTOMER).build();
         userRepository.save(user);
         return user;
     }

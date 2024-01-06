@@ -31,14 +31,14 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         final String authedHeader = request.getHeader("Authorization");
         final  String JWT;
-        final String userEmail;
+        System.out.println(authedHeader);
         if(Objects.isNull(authedHeader) || !authedHeader.startsWith("Bearer ")){
             filterChain.doFilter(request,response);
             return;
         }
 
         // get JWT
-        JWT = authedHeader.substring(7);
+        JWT = authedHeader.substring(7); 
         //check validation token
         DecodedJWT decodedJWT = jwtService.isTokenCorrect(JWT);
         //verify token
@@ -61,5 +61,7 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
             // set the authentication token in the SecurityContextHolder
             SecurityContextHolder.getContext().setAuthentication(authenticationToken);
         }
+        filterChain.doFilter(request, response);
+
     }
 }

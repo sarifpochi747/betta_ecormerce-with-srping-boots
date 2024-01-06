@@ -53,7 +53,7 @@ public class UserBusinessLogic {
 
         User user = userService.crateUser(request.getName(),request.getEmail(),request.getPassword());
 
-        //TODO :Mapper structure User to MRegisterRespone
+        //TODO :Mapper structure User to MRegisterResponse
         return userMapper.toRegisterRespone(user);
 
     }

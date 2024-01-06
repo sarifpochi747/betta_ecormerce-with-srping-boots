@@ -32,7 +32,7 @@ public class JwtService {
                 .withIssuedAt(new Date(System.currentTimeMillis()))
                 .withExpiresAt(new Date(System.currentTimeMillis() + 1000 * 60 * 24))
                 .withClaim("role", String.valueOf(user.getRole()))
-                .sign(algorithm);2
+                .sign(algorithm);
 
         return token;
     }
